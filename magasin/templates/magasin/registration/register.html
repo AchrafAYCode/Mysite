@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S'inscrire</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+      h2 {
+        text-align: center;
+        margin-top: 50px;
+        color: #333;
+      }
+      form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      table {
+        width: 100%;
+      }
+      td {
+        padding: 10px 0;
+      }
+      button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      small {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+      }
+      small a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      small a:hover {
+        text-decoration: underline;
+      }
+      .alert.alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        padding: 0.75rem 1.25rem;
+        margin-top: 0.5rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>S'inscrire</h2>
+    <div>
+      <form method="post">
+        {% csrf_token %} {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+        {% endfor %} {% endif %}
+        <table>
+          {% for field in form %}
+          <tr>
+            <td>{{ field.label_tag }}</td>
+            <td>{{ field }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <button type="submit">Se connecter</button>
+      </form>
+    </div>
+    <div>
+      <small>
+        Déjà inscrit.e?
+        <a href="{% url 'login' %}">Se connecter</a>
+      </small>
+    </div>
+  </body>
+</html>

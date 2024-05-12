@@ -1,0 +1,71 @@
+{% extends 'magasin/base.html' %} 
+{% load static %}
+<style>
+  /* Styles pour la vitrine de produits */
+  .conteneur {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .product-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .product-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .product-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .product-info {
+    padding: 15px;
+  }
+
+  .product-info h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .product-info p {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #777;
+  }
+
+  .product-info .price {
+    font-weight: bold;
+    color: #007bff;
+  }
+</style>
+{% block content %}
+<div class="conteneur">
+  <div class="product-grid">
+    {% for article in list %}
+    <div class="product-item">
+      <img src="/media/{{article.img}}" height="350px" alt="{{ article.libelle }}" class="product-image">
+      <div class="product-info">
+        <h3>{{ article.libelle }}</h3>
+        <p>{{ article.description }}</p>
+        <p class="price">{{ article.prix }} DT.</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

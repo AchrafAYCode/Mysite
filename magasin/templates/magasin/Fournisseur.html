@@ -1,0 +1,69 @@
+{% extends 'magasin/base.html' %}
+{% block title %} Liste des Fournisseurs {% endblock %}
+
+{% block content %}
+<style>
+  /* Ajoutez vos styles CSS ici */
+  #fournisseurs {
+    margin-top: 20px;
+  }
+
+  #fournisseurs .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #fournisseurs .row > div {
+    width: 250px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  #fournisseurs .row > div p {
+    margin: 0;
+  }
+
+  /* Styles supplémentaires */
+  #fournisseurs .row > div:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #fournisseurs .row > div p strong {
+    color: #333;
+  }
+</style>
+
+<div class="col-md-12 text-center">
+  <h2>Ajouter un fournisseur</h2>
+</div>
+<form method='POST' class="post-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-default">Enregistrer</button>
+</form>
+
+<!-- body -->
+<div class="container-fluid mt-3">
+  <div class="row">
+    <!-- all fournisseurs -->
+    <div id="fournisseurs" class="col-lg-9 mx-auto">
+      <div class="row mx-auto">
+        {% for fournisseur in fournisseurs %}
+        <div id="{{ fournisseur.id }}">
+          <div>
+            <p><strong>{{ fournisseur.nom }}</strong></p>
+            <p>{{ fournisseur.adresse }}</p>
+            <p>{{ fournisseur.email }}</p>
+            <p>{{ fournisseur.telephone }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

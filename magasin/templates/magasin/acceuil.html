@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title>Création d'un design étape par étape - Etape n°1 : Le code xhtml</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        #conteneur {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #header a {
+            text-decoration: none;
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        #menu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #menu li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #menu li:last-child {
+            margin-right: 0;
+        }
+
+        #menu li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        #menu li a:hover {
+            color: #007bff;
+        }
+
+        #contenu {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        #footer {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="conteneur">
+        <h1 id="header">
+            <a href="#" title="Colored Design"><span>Colored Design</span></a>
+        </h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="/magasin/">Application n°1 : Magasin</a></li>
+                <li><a href="/blog/">Application n°2 : Blog</a></li>
+                <li><a href="#">Application n°3</a></li>
+            </ul>
+        </nav>
+        <div id="contenu">
+            <h2>Un titre</h2>
+            <p>Un paragraphe</p>
+        </div>
+        <p id="footer">©2024 - All rights reservered -  Achraf Ayadi</p>
+    </div>
+</body>
+</html>

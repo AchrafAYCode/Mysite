@@ -1,0 +1,63 @@
+{% extends 'magasin/base.html' %}
+{% block title %} Liste des Fournisseurs {% endblock %}
+
+{% block content %}
+<style>
+  /* Ajoutez vos styles CSS ici */
+  #commandes {
+    margin-top: 20px;
+  }
+
+  #commandes .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #commandes .row > div {
+    width: 250px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  #commandes .row > div p {
+    margin: 0;
+  }
+</style>
+
+<div class="col-md-12 text-center">
+  <h2>Ajouter une Commande</h2>
+</div>
+<form method='POST' class="post-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-default">Enregistrer</button>
+</form>
+
+<!-- body -->
+<div class="container-fluid mt-3">
+  <div class="row">
+    <!-- all commandes -->
+    <div id="commandes" class="col-lg-9 mx-auto">
+      <div class="row mx-auto">
+        {% for commande in commandes %}
+        <div>
+          <div>
+            <p>Date de commande : {{ commande.dateCde }}</p>
+            
+              {% for produit in commande.produits.all %}
+              <p>{{ produit.libelle }} :  {{ produit.prix }}</p>
+              {% endfor %}
+            
+            <p>Total de la commande : {{ commande.calculer_total }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
