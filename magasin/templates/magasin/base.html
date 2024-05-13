@@ -41,6 +41,9 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        button {
+            background-color: #343a40;
+        }
 
         /* Ajouter des styles supplémentaires au contenu si nécessaire */
     </style>
@@ -71,9 +74,15 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="#">{{user}}</a>
                     </li>
+
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button class="btn btn-outline-light" type="submit">Déconnexion</button>
+                        </form>
+                    
                     </li>
+
                     {% else %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'login' %}">Connexion</a>

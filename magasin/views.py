@@ -87,7 +87,7 @@ def logoutt ( request):
    
 
 def login(request) :
-    #Teste si le formulaire a été envoyé
+    
     if request .method=="POST" :
         form = AuthenticationForm(request .POST)
         if form . is_valid() :
